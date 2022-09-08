@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    {% for message in messages %}
+    {{message}}
+    {% endfor %}
+</div>
+
+<div class="container">
+    <div class="row justify-content-center mt-3"">
+        <div class="col-6 border border-3 border-dark bg-light p-2">
+        <p class="text-center lead h1">Register</p>
+        <form action="" method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <div class="p">Already a user? <a href="{% url 'login' %}">Login</a></div>
+        <button type="submit" class="btn btn-dark text-center text-white mt-2 justify-content-center">Register</button>
+        </form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

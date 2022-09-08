@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <form action="" method="post">
+                    {% csrf_token %}
+                    <div class="card-header">Confirm Delete</div>
+                    <div class="card-text"><p>Are you sure you want to delete "{{task.title}}"?</p>
+                    <a href="{{request.META.HTTP_REFERER}}" class="btn btn-dark text-white text-center">Back</a></div>
+
+                    <button type="submit" class="btn btn-dark text-white text-center">Delete</button>
+                    </form>
+                    
+                </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+</div>
+{% endblock %}

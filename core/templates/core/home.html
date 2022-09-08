@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row mt-3">
+        <div class="col-md-3"></div>
+        <div class="col-md-6 bg-light">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-header text-center lead">Tasks ({{user.username|title}})</div>
+                        <div class="card-title mb-2"><a class="btn btn-dark text-white small" href="{% url 'addtask' %}">Add task</a></div>
+                        <div class="container">
+                        {% for task in tasks %}
+                        <div class="row">
+                        {% if task.completed %}
+                        <div><p class="small"><s>{{task.title}}</s><a class="btn btn-dark text-white small float-end mb-3" href="{% url 'edit-task' task.id %}">Edit task</a><a class="btn btn-dark text-white small float-end mb-3 me-2" href="{% url 'delete-task' task.id %}">Delete task</a></p></div>
+                        {% else %}
+                        <div><p class="small">{{task.title}}<a class="btn btn-dark text-white small float-end mb-3" href="{% url 'edit-task' task.id %}">Edit task</a><a class="btn btn-dark text-white small float-end mb-3 me-2" href="{% url 'delete-task' task.id %}">Delete task</a></p></div>
+                        {% endif %}
+                        {% empty %}
+                        <p class="display-5">Uhh, your To-do list is empty. Add a task.</p>
+                        {% endfor %}  
+                        </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>
+{% endblock %}
